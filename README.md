@@ -1,52 +1,89 @@
-# 🤖 Agente WhatsApp Modular
+# 🌿 Maya HopeCann - Atendente Virtual
 
-Sistema modular e reutilizável para automação de mensagens WhatsApp via Evolution API.
+**Maya** é uma atendente virtual especializada em agendamento de consultas médicas para cannabis medicinal, integrada com WhatsApp via Evolution API.
 
-## 🎯 Características
+## ✨ Funcionalidades Principais
 
-✅ **Modular** - Componentes independentes e reutilizáveis  
-✅ **Limpo** - Código organizado e fácil de entender  
-✅ **Plug & Play** - Fácil integração em outros projetos  
-✅ **Configurável** - Respostas e comportamentos personalizáveis  
-✅ **Robusto** - Tratamento de erros e logs detalhados  
+🎙️ **Transcrição de Áudio** - Converte áudios WhatsApp em texto usando OpenAI Whisper  
+🤖 **IA Conversacional** - Respostas naturais e inteligentes com Agno Framework  
+📅 **Agendamento Inteligente** - Agenda consultas automaticamente  
+🎥 **Google Meet** - Cria reuniões automáticas para consultas  
+💾 **Memória Persistente** - Lembra conversas e preferências dos pacientes  
+🔗 **Integração Completa** - Supabase, OpenAI, Evolution API, Google Calendar  
 
-## 📁 Estrutura Modular
+## 🚀 Deploy Web
 
+### Render (Recomendado)
+
+1. **Fork este repositório**
+2. **Configure no [Render](https://render.com):**
+   - Build Command: `pip install -r requirements.txt`
+   - Start Command: `gunicorn app:app`
+   - Environment: Python 3
+
+3. **Variáveis de Ambiente:**
+```env
+OPENAI_API_KEY=sk-...
+EVOLUTION_API_URL=https://sua-evolution-api.com
+EVOLUTION_API_KEY=sua-chave
+EVOLUTION_INSTANCE_NAME=maya-bot
+SUPABASE_URL=https://projeto.supabase.co
+SUPABASE_KEY=sua-chave
 ```
-├── docker-compose.yml          # Evolution API v1.8.2
-├── whatsapp-agent/
-│   ├── app.py                 # 🚀 Aplicação principal
-│   ├── quick_start.py         # ⚡ Início rápido
-│   ├── .env                   # ⚙️ Configurações
-│   ├── requirements.txt       # 📦 Dependências
-│   ├── core/                  # 🧠 Módulos principais
-│   │   ├── __init__.py
-│   │   ├── whatsapp_client.py    # 📱 Cliente WhatsApp
-│   │   ├── message_handler.py    # 💬 Processador de mensagens
-│   │   └── response_generator.py # 🤖 Gerador de respostas
-│   └── examples/              # 📚 Exemplos de uso
-│       ├── custom_responses.py
-│       └── send_message.py
-```
 
-## 🚀 Início Rápido
+## 🛠️ Desenvolvimento Local
 
-### 1. Configuração Inicial
 ```bash
-# Inicie a Evolution API
-docker-compose up -d
+# 1. Clone o repositório
+git clone https://github.com/deveclipsy007/maya.git
+cd maya
 
-# Instale dependências
-cd whatsapp-agent
+# 2. Instale dependências
 pip install -r requirements.txt
+
+# 3. Configure .env
+cp .env.example .env
+# Edite .env com suas chaves
+
+# 4. Execute
+python maya_hopecann.py
 ```
 
-### 2. Quick Start
-```bash
+## 📡 API Endpoints
 
-### 1. Ambiente Virtual
+- `POST /webhook` - Recebe mensagens WhatsApp
+- `GET /health` - Status do sistema
+- `GET /agendamentos` - Lista agendamentos
+- `GET /medicos` - Lista médicos disponíveis
 
-```bash
+## 🏗️ Arquitetura
+
+```
+├── app.py                 # 🚀 Ponto de entrada (deploy)
+├── maya_hopecann.py       # 🧠 Aplicação principal
+├── requirements.txt       # 📦 Dependências
+├── render.yaml           # ⚙️ Configuração Render
+├── agents/               # 🤖 Agentes especializados
+├── evolution_client/     # 📱 Cliente Evolution API
+└── webhook_server/       # 🔗 Servidor de webhooks
+```
+
+## 🔐 Segurança
+
+- ✅ Variáveis de ambiente para credenciais
+- ✅ Arquivos sensíveis no `.gitignore`
+- ✅ Validação robusta de entrada
+- ✅ Logs sem informações pessoais
+
+## 📖 Documentação
+
+- [README_DEPLOY.md](README_DEPLOY.md) - Guia completo de deploy
+- [GUIA_MAYA_HOPECANN.md](GUIA_MAYA_HOPECANN.md) - Documentação técnica
+- [EVOLUTION_API_CONFIG.md](EVOLUTION_API_CONFIG.md) - Configuração Evolution API
+
+---
+
+**Maya HopeCann** - Transformando o atendimento médico com IA 🌿
 python -m venv .venv
 python app.py
 ```
@@ -221,3 +258,6 @@ docker logs evolution-api
 
 **🎉 Sistema modular pronto para produção!**
 
+=======
+# maya
+>>>>>>> 7e84ea569a577f9f9f6f3053d34f6ada10123d05
