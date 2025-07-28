@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: maya-hopecann
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: PORT
+        value: 10000
+    # Variáveis de ambiente que precisam ser configuradas no Render Dashboard:
+    # OPENAI_API_KEY
+    # EVOLUTION_API_URL
+    # EVOLUTION_API_KEY
+    # EVOLUTION_INSTANCE_NAME
+    # SUPABASE_URL
+    # SUPABASE_KEY

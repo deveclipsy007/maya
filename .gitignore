@@ -1,0 +1,79 @@
+# Arquivos de ambiente e configuração sensível
+.env
+.env.*
+*.env
+
+# Credenciais e tokens
+credentials.json
+token.json
+client_secret_*.json
+
+# Arquivos temporários de áudio
+temp_audio_*
+*.ogg
+*.wav
+*.mp3
+*.enc
+
+# Arquivos de imagem temporários
+imagem.png
+banner.png
+
+# Mensagens recebidas (dados sensíveis)
+mensagens_recebidas/
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Banco de dados local
+*.db
+*.sqlite
+*.sqlite3
+
+# Arquivos de teste
+test_*.py
+teste_*.py
+diagnostico_*.py
+audio_diagnostic.py
+
+# Docker
+.dockerignore
