@@ -20,9 +20,6 @@ google-auth-httplib2==0.1.1
 googleapis-common-protos==1.60.0
 google-api-python-client==2.100.0
 
-# Agno Framework
-agno==0.1.0
-
 # Utilitários
 requests==2.31.0
 python-dotenv==1.0.0

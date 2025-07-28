@@ -24,10 +24,10 @@ from dotenv import load_dotenv
 # Importar funções de processamento de áudio
 from process_audio import process_audio_message
 
-# Importações do Agno Framework
-from agno.agent import Agent
-from agno.models.openai import OpenAIChat
-from agno.tools.duckduckgo import DuckDuckGoTools
+# Implementação simples sem Agno Framework
+# from agno.agent import Agent
+# from agno.models.openai import OpenAIChat
+# from agno.tools.duckduckgo import DuckDuckGoTools
 
 # Importação do OpenAI para transcrição de áudio
 from openai import OpenAI
@@ -497,53 +497,76 @@ def criar_reuniao_google_meet(titulo, data_hora, duracao_minutos=60, participant
 
 # ===== AGNO FRAMEWORK SETUP - MAYA =====
 
+class SimpleMayaAgent:
+    """
+    Implementação simples da Maya sem Agno Framework
+    """
+    def __init__(self):
+        self.name = "Maya - HopeCann"
+        self.system_prompt = """
+Você é Maya, a atendente virtual especializada da HopeCann! 🌿
+
+Sua missão é ajudar pacientes a agendarem consultas médicas para prescrição de cannabis medicinal.
+
+Suas características:
+- Nome: Maya
+- Empresa: HopeCann
+- Especialidade: Agendamento de consultas médicas para cannabis medicinal
+- Personalidade: Acolhedora, profissional, empática e informativa
+- Conhecimento: Cannabis medicinal, legislação, benefícios terapêuticos
+- Objetivo: Facilitar o acesso à cannabis medicinal através de consultas especializadas
+
+Instruções:
+- Apresente-se como Maya da HopeCann APENAS na primeira interação com cada paciente
+- Seja acolhedora e empática - muitos pacientes podem estar sofrendo
+- Explique que a HopeCann conecta pacientes a médicos especializados em cannabis medicinal
+- Colete informações essenciais: nome, telefone, email, condição médica, preferência de data/horário
+- Ofereça horários disponíveis baseados na agenda médica
+- Crie reuniões no Google Meet automaticamente após confirmação
+- Forneça informações educativas sobre cannabis medicinal quando apropriado
+- Mantenha sigilo médico e seja respeitosa com informações sensíveis
+- Use emojis relacionados à saúde e bem-estar: 🌿 💚 🩺 📅 ✅
+- Sempre responda em português brasileiro
+- Se não souber algo específico sobre cannabis medicinal, busque informações atualizadas
+- Evite repetir informações já mencionadas na conversa
+- Mantenha respostas diretas e focadas no objetivo do paciente
+"""
+    
+    def run(self, message, conversation_history=None):
+        """
+        Processa mensagem usando OpenAI diretamente
+        """
+        try:
+            messages = [
+                {"role": "system", "content": self.system_prompt}
+            ]
+            
+            # Adicionar histórico de conversa se disponível
+            if conversation_history:
+                messages.extend(conversation_history)
+            
+            # Adicionar mensagem atual
+            messages.append({"role": "user", "content": message})
+            
+            response = openai_client.chat.completions.create(
+                model=AI_MODEL,
+                messages=messages,
+                max_tokens=500,
+                temperature=0.7
+            )
+            
+            return response.choices[0].message.content
+            
+        except Exception as e:
+            logger.error(f"Erro ao processar mensagem com Maya: {str(e)}")
+            return "Desculpe, estou com dificuldades técnicas no momento. Tente novamente em alguns instantes. 🌿"
+
 def create_maya_agent():
     """
-    Cria Maya - Atendente Virtual HopeCann usando Agno Framework
+    Cria Maya - Atendente Virtual HopeCann usando implementação simples
     """
     try:
-        agent = Agent(
-            name="Maya - HopeCann",
-            model=OpenAIChat(
-                id=AI_MODEL,
-                api_key=OPENAI_API_KEY
-            ),
-            tools=[
-                DuckDuckGoTools()  # Ferramenta de busca web para informações sobre cannabis medicinal
-            ],
-            description="""
-            Você é Maya, a atendente virtual especializada da HopeCann! 🌿
-            
-            Sua missão é ajudar pacientes a agendarem consultas médicas para prescrição de cannabis medicinal.
-            
-            Suas características:
-            - Nome: Maya
-            - Empresa: HopeCann
-            - Especialidade: Agendamento de consultas médicas para cannabis medicinal
-            - Personalidade: Acolhedora, profissional, empática e informativa
-            - Conhecimento: Cannabis medicinal, legislação, benefícios terapêuticos
-            - Objetivo: Facilitar o acesso à cannabis medicinal através de consultas especializadas
-            """,
-            instructions=[
-                "Apresente-se como Maya da HopeCann APENAS na primeira interação com cada paciente",
-                "Seja acolhedora e empática - muitos pacientes podem estar sofrendo",
-                "Explique que a HopeCann conecta pacientes a médicos especializados em cannabis medicinal",
-                "Colete informações essenciais: nome, telefone, email, condição médica, preferência de data/horário",
-                "Ofereça horários disponíveis baseados na agenda médica",
-                "Crie reuniões no Google Meet automaticamente após confirmação",
-                "Forneça informações educativas sobre cannabis medicinal quando apropriado",
-                "Mantenha sigilo médico e seja respeitosa com informações sensíveis",
-                "Use emojis relacionados à saúde e bem-estar: 🌿 💚 🩺 📅 ✅",
-                "Sempre responda em português brasileiro",
-                "Se não souber algo específico sobre cannabis medicinal, busque informações atualizadas",
-                "Evite repetir informações já mencionadas na conversa",
-                "Mantenha respostas diretas e focadas no objetivo do paciente"
-            ],
-            show_tool_calls=True,
-            markdown=False,  # WhatsApp não suporta markdown
-            debug_mode=False
-        )
-        
+        agent = SimpleMayaAgent()
         logger.info("🌿 Maya - Atendente HopeCann criada com sucesso!")
         return agent
         
@@ -1201,17 +1224,9 @@ Após o cadastro, ficarei feliz em ajudá-lo com todas suas necessidades! 😊�
             logger.info(f"🔄 Interação subsequente - sem apresentação para {from_number}")
         
         
-        # Gerar resposta com Maya
+        # Gerar resposta com Maya (implementação simples)
         logger.info(f"🌿 Gerando resposta Maya para: {text_content[:50]}...")
-        response = maya_agent.run(full_prompt)
-        
-        # Extrair conteúdo da resposta corretamente
-        if hasattr(response, 'content'):
-            maya_response = response.content
-        elif hasattr(response, 'message'):
-            maya_response = response.message
-        else:
-            maya_response = str(response)
+        maya_response = maya_agent.run(full_prompt)
         
         logger.info(f"✅ Resposta Maya gerada: {maya_response[:100]}...")
         
