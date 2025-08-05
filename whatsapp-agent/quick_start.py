@@ -10,7 +10,7 @@ from core import WhatsAppClient
 def check_evolution_api():
     """Verifica se Evolution API está rodando"""
     try:
-        response = requests.get("http://localhost:8080", timeout=3)
+        response = requests.get("http://localhost:8090", timeout=3)
         return response.status_code == 200
     except:
         return False
@@ -18,7 +18,7 @@ def check_evolution_api():
 def open_manager():
     """Abre o manager no navegador"""
     try:
-        webbrowser.open("http://localhost:8080/manager")
+        webbrowser.open("http://localhost:8090/manager")
         return True
     except:
         return False

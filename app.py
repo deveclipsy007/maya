@@ -6,7 +6,11 @@ Ponto de entrada para deploy web (Render, Heroku, etc.)
 
 import os
 import sys
-from maya_hopecann import app
+
+# Adicionar src ao path para importações
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
+
+from src.core.maya_hopecann import app
 
 if __name__ == '__main__':
     # Configuração para deploy web

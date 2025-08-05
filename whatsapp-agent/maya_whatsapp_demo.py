@@ -15,7 +15,7 @@ logging.basicConfig(level=logging.INFO, format='[%(asctime)s] %(levelname)s: %(m
 logger = logging.getLogger(__name__)
 
 # Configurações WhatsApp (do .env)
-EVOLUTION_API_URL = "http://localhost:8080"
+EVOLUTION_API_URL = "http://localhost:8090"
 INSTANCE_NAME = "agente_bot"
 API_KEY = "1234"
 

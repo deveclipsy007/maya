@@ -11,7 +11,7 @@ load_dotenv()
 
 class WhatsAppClient:
     def __init__(self):
-        self.api_url = os.getenv("EVOLUTION_API_URL", "http://localhost:8080")
+        self.api_url = os.getenv("EVOLUTION_API_URL", "http://localhost:8090")
         self.instance = os.getenv("INSTANCE_NAME", "agente_bot")
         self.api_key = os.getenv("API_KEY", "1234")
         

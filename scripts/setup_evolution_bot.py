@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Variáveis de configuração
-EVOLUTION_API_URL = os.getenv('EVOLUTION_API_URL', 'http://localhost:8080')
+EVOLUTION_API_URL = os.getenv('EVOLUTION_API_URL', 'http://localhost:8090')
 EVOLUTION_API_KEY = os.getenv('EVOLUTION_API_KEY', '1234')  # Valor padrão conforme docker-compose
 EVOLUTION_INSTANCE = os.getenv('EVOLUTION_INSTANCE_NAME', 'agente_bot')  # Nome da instância conforme .env
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')

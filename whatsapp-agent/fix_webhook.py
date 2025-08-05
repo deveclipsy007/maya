@@ -7,10 +7,12 @@ import json
 import time
 
 # Configurações
-EVOLUTION_API_URL = "http://localhost:8080"
+EVOLUTION_API_URL = "http://localhost:8090"
 INSTANCE_NAME = "agente_bot"
 API_KEY = "1234"
 WEBHOOK_URL = "http://localhost:5000/webhook"
+
+EVOLUTION_API_URL = "http://localhost:8090"  # This line is already correct
 
 def check_evolution_api():
     """Verifica se Evolution API está funcionando"""

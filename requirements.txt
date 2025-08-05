@@ -1,5 +1,7 @@
 # Web Framework
 flask==2.2.3
+fastapi==0.104.1
+uvicorn==0.24.0
 werkzeug==2.2.3
 gunicorn==21.2.0
 
@@ -20,6 +22,9 @@ google-auth-httplib2==0.1.1
 googleapis-common-protos==1.60.0
 google-api-python-client==2.100.0
 
+# Criptografia
+pycryptodome==3.19.0
+
 # Utilitários
 requests==2.31.0
 python-dotenv==1.0.0
@@ -27,3 +32,4 @@ psutil==5.9.5
 
 # Logging e Debugging
 coloredlogs==15.0.1
+structlog==23.2.0

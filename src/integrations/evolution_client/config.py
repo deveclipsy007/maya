@@ -26,7 +26,7 @@ class EvolutionConfig:
         api_key: Optional[str] = None,
         instance_name: Optional[str] = None
     ):
-        self.base_url = base_url or os.getenv("EVOLUTION_API_URL", "http://localhost:8080")
+        self.base_url = base_url or os.getenv("EVOLUTION_API_URL", "http://localhost:8090")
         self.api_key = api_key or os.getenv("EVOLUTION_API_KEY", "1234")
         self.instance_name = instance_name or os.getenv("EVOLUTION_INSTANCE_NAME", "agente_bot")
         

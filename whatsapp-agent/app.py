@@ -172,7 +172,7 @@ if __name__ == "__main__":
     setup_webhook()
     
     logger.info("✅ Agente WhatsApp pronto!")
-    logger.info("📱 Acesse http://localhost:8080/manager para conectar WhatsApp")
+    logger.info("📱 Acesse http://localhost:8090/manager para conectar WhatsApp")
     logger.info("🌐 API rodando em http://localhost:5000")
     
     # Inicia servidor Flask
