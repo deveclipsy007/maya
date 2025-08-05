@@ -77,3 +77,29 @@ audio_diagnostic.py
 
 # Docker
 .dockerignore
+
+# === RAILWAY E DEPLOY ===
+.railway/
+railway.json
+.railway.json
+
+# Node modules (Railway CLI)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build artifacts
+*.whl
+.eggs/
+
+# Backup directories
+maya_backup_*/
+backup/
+*_backup/
+
+# Supabase local
+.supabase/
+
+# Evolution API volumes
+evolution_instances/
+evolution_store/
